@@ -30,13 +30,13 @@ router.get('/users', (req, res) => {
   });
   
 
-router.get('/users/:id', (req, res) => {
+router.get('/user/:id', (req, res) => {
   try {
     const { id } = req.params;
     const user = userslist.find((user) => user.id === id);
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: 'User not found',success:'false' });
     }
 
     res.status(200).json({
@@ -74,7 +74,7 @@ router.post('/add', (req, res) => {
   }
 });
 
-router.put('/users/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
   try {
     const { id } = req.params;
     const { email, firstName } = req.body;
